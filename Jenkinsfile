@@ -1,4 +1,3 @@
-// Jenkinsfile
 pipeline {
     agent any
 
@@ -21,10 +20,17 @@ pipeline {
                 sh 'mvn test'
             }
         }
+        stage('Debug') {
+            steps {
+                // List files to verify directory structure
+                sh 'ls -R'
+            }
+        }
     }
     post {
         always {
-            junit '*.xml' // Ensure this path matches your actual reports location
+            // Archive the test results
+            junit 'target/surefire-reports/*.xml' // Ensure this path matches your actual reports location
         }
     }
 }
