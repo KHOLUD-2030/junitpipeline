@@ -24,7 +24,7 @@ pipeline {
     }
     post {
         always {
-            junit 'target/surefire-reports/*.xml' // Ensure this path matches your actual reports location
+            junit '*.xml' // Ensure this path matches your actual reports location
         }
     }
 }
