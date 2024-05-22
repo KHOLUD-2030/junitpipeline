@@ -24,6 +24,8 @@ pipeline {
             steps {
                 // List files to verify directory structure
                 sh 'ls -R'
+                // List contents of target/surefire-reports to check if reports are generated
+                sh 'ls target/surefire-reports || true'
             }
         }
     }
